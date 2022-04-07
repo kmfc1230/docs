@@ -1,6 +1,7 @@
 # git
+- 参考资料：https://www.runoob.com/git/git-tutorial.html
 
-## 查看和设置全局用户名和邮箱
+## git配置
 - 参考资料：https://blog.csdn.net/qq_43768946/article/details/90411154
 ```shell
 # 查看
@@ -20,6 +21,10 @@ ssh-keygen -t rsa -C "email@email.com"
 # 测试通不通
 ssh -T git@github.com
 ```
+## 初始化
+```shell
+git init
+```
 ## 拉取代码
 ```shell
 git clone git@github.com:your_name/your_project.git
@@ -38,3 +43,5 @@ git push -u origin master
 
 
 # svn
+- 参考资料：https://www.runoob.com/svn/svn-tutorial.html
+## 待补充
