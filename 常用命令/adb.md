@@ -1,4 +1,4 @@
-参考地址：https://developer.android.google.cn/studio?hl=zh-cn
+参考文档：https://developer.android.google.cn/studio?hl=zh-cn
 
 常用adb命令：  
 1、通过IP地址连接到设备  
