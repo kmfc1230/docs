@@ -75,3 +75,15 @@
 |||
 |||
 |||
+
+```shell
+# dpkg
+# 安装
+sudo dpkg -i xx.deb
+# 查询包名方便卸载
+sudo dpkg -l 'xx'
+# 卸载
+sudo dpkg -r xx
+# 卸载配置信息
+sudo dpkg -P xx
+```
