@@ -27,7 +27,10 @@ git init
 ```
 ## 拉取代码
 ```shell
+# 下载项目
 git clone git@github.com:your_name/your_project.git
+# 下载远程代码并合并
+git pull origin master
 ```
 ## 推送代码
 ```shell
