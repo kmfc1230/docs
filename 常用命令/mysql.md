@@ -47,8 +47,15 @@ create database db1 charset=utf8;
 ```
 10、创建新表
 ```shell
-# key 用反引号``包起来
-create table t1(`id` int(4), `name` char(64));
+CREATE TABLE USER(
+   id INT NOT NULL AUTO_INCREMENT,
+   NAME VARCHAR(30) NOT NULL,
+   PASSWORD VARCHAR(32) NOT NULL,
+   age INT(11)  NOT NULL,
+   sex VARCHAR(2) DEFAULT '男' CHECK (性别 IN ('男','女')),
+   birthday DATE,
+   PRIMARY KEY ( id )
+   )ENGINE=INNODB DEFAULT CHARSET=utf8;
 ```
 11、查询数据库状态
 ```shell
