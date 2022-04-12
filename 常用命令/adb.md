@@ -32,4 +32,9 @@
 14、录屏  
 `adb shell screenrecord /sdcard/demo.mp4`  
 15、获取apk包名  
-`adb -s serial_number shell dumpsys window w | findstr \/ | findstr name=`  
+```shell
+# win
+adb shell dumpsys window w | findstr \/ | findstr name=
+# linux
+adb shell dumpsys window w | grep mFocusedApp
+```

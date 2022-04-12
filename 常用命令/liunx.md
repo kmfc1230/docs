@@ -87,3 +87,14 @@ sudo dpkg -r xx
 # 卸载配置信息
 sudo dpkg -P xx
 ```
+
+sudo docker run --detach \
+  --hostname localhost \
+  --publish 10443:443 --publish 1080:80 --publish 1022:22 \
+  --name gitlab \
+  --restart always \
+  --volume $GITLAB_HOME/config:/etc/gitlab \
+  --volume $GITLAB_HOME/logs:/var/log/gitlab \
+  --volume $GITLAB_HOME/data:/var/opt/gitlab \
+  --shm-size 256m \
+  gitlab/gitlab-ee:latest

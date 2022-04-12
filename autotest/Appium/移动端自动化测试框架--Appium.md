@@ -61,5 +61,44 @@ driver = webdriver.Remote('http://localhost:4723/wd/hub', desired_caps)
 driver.quit()
 ```
 
+## Appium基础API
+```python
+# 启动activity
+driver.start_activity('pkg_name','activity_name')
+# 获取app的包名和activity
+driver.current_package
+drivier.current_activity
+# 关闭app
+driver.close_app()
+# 关闭驱动对象
+driver.quit()
+# 安装app
+driver.install_app(path)
+# 卸载app,app_id也可以用app包名
+driver.remove_app(app_id)
+# 判断app是否安装
+driver.is_app_installed(app_id)
+# 将应用置于后台一定时间后返回前台，模拟热启动
+driver.backgroud_app(seconds)
+```
+
+## UIAutomatorViewer
+- 使用uiautomatorviewer定位元素
+- 元素定位操作API
+```shell
+# 定位一个元素
+driver.find_element_by_id(id_value)
+driver.find_element_by_class_name(class_name)
+driver.find_element_by_xpath(xpath_value)
+# 定位一组元素
+driver.find_elements_by_id(id_value)
+driver.find_elements_by_class_name(class_name)
+driver.find_elements_by_xpath(xpath_value)
+# 定位元素的注意点
+# 1、若使用find_element_by_xx方法，传入一个没有的特征，会报NoSuchElementException的错误
+# 2、若使用find_elements_by_xx方法，传入一个没有的特征，不会报错，返回一个空列表
+```
+## 元素等待
+
 
 
