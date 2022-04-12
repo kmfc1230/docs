@@ -1,4 +1,5 @@
 # ubuntu上环境准备
+- 课程：https://www.bilibili.com/video/BV1B441197rZ?p=24&spm_id_from=pageDriver
 
 ## 安卓环境配置
 
@@ -99,6 +100,10 @@ driver.find_elements_by_xpath(xpath_value)
 # 2、若使用find_elements_by_xx方法，传入一个没有的特征，不会报错，返回一个空列表
 ```
 ## 元素等待
+由于一些原因（网络、服务器、设备配置等），我们想找的元素没有立刻出来，此时如果直接定位可能会报错。  
+概念：找元素的时候，通过一个时间的设置，进行等待元素，防止报错。  
+- 隐式等待
 
+- 显式等待
 
 
