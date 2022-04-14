@@ -103,7 +103,10 @@ driver.find_elements_by_xpath(xpath_value)
 由于一些原因（网络、服务器、设备配置等），我们想找的元素没有立刻出来，此时如果直接定位可能会报错。  
 概念：找元素的时候，通过一个时间的设置，进行等待元素，防止报错。  
 - 隐式等待
-
+```shell
+# 设置元素等待的时长t，超时抛出NoSuchElementException异常
+driver.implicitly_wait(t)
+```
 - 显式等待
 
 
