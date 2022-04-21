@@ -208,3 +208,24 @@ driver.drag_and_drop(origin_e1, destination_el)
   - 方法
     - `TouchAction(driver).move_to(el=None, x=None, y=None).perform`
     - 参数：元素(el)或坐标(x, y)
+
+## 手机操作API
+- 获取手机分辨率
+  - `driver.get_window_size()`
+- 获取手机截图
+  - `driver.get_screenshot_as_file("filepath")`
+- 获取和设置网络状态
+  - 获取手机网络
+    - `driver.network_connection`
+  - 设置手机网络
+    - `driver.set_network_connection(connectionType)`
+- 发送键到设备
+  - `driver.press_keycode(keycode, metastate=None)`
+  - android_keycode
+    - http://www.temblast.com/ref/akeyscode.htm
+- 打开和关闭通知栏
+  - 打开通知栏
+    - `driver.open_notifications()`
+  - 关闭通知栏
+    - 使用返回键
+      - press_keycode(4)
