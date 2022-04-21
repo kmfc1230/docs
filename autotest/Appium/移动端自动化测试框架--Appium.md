@@ -99,14 +99,112 @@ driver.find_elements_by_xpath(xpath_value)
 # 1、若使用find_element_by_xx方法，传入一个没有的特征，会报NoSuchElementException的错误
 # 2、若使用find_elements_by_xx方法，传入一个没有的特征，不会报错，返回一个空列表
 ```
+
 ## 元素等待
 由于一些原因（网络、服务器、设备配置等），我们想找的元素没有立刻出来，此时如果直接定位可能会报错。  
 概念：找元素的时候，通过一个时间的设置，进行等待元素，防止报错。  
 - 隐式等待
 ```shell
-# 设置元素等待的时长t，超时抛出NoSuchElementException异常
-driver.implicitly_wait(t)
+# 设置元素等待的时长timeout，单位秒，超时抛出NoSuchElementException异常
+driver.implicitly_wait(timeout)
 ```
 - 显式等待
+```shell
+# 针对所有定位元素超时时间不同的时候
+# 使用显式等待，在20s内，每隔3s查找一次，id为xxx的元素
+WebDriverWait(driver ,20 ,3).until(lambda x: x.find_element_by_id("xxx"))
+```
+- 区别：显式等待为单个元素有效，隐式等待为全局元素
 
+## 元素操作API
+- 点击元素
+```shell
+element.click()
+```
+- 输入和清空输入框内容
+```shell
+# 输入
+# 默认输入中文有问题，需要加入参数
+desired.caps['unicodeKeyboard'] = True
+desired_caps['resetKeyboard'] = True
+# value 要输入的内容
+element.send_keys(value)
+# 清空
+element.clear()
+```
+- 获取文本内容
+```shell
+element.text
+```
+- 获取元素的属性值
+```shell
+element.get_attribute(value)
+```
 
+## 滑动和拖拽事件
+- swipe 滑动事件
+```shell
+# 从一个坐标滑动到另一个坐标，只能是两个点之间的滑动
+# duration: 滑动操作持续的时间，单位：ms
+driver.swipe(start_x, start_y, end_x, end_y, duration=None)
+```
+- scroll 滑动事件
+```shell
+# 惯性大
+# origin_e1         滑动开始的元素
+# destination_el    滑动结束的元素
+driver.scroll(origin_e1, destination_el)
+```
+- drag_and_drop 拖拽事件
+```shell
+# 没有惯性
+driver.drag_and_drop(origin_e1, destination_el)
+```
+- 总结
+  - swipe
+    - 参数是坐标点
+    - 持续时间短，惯性大，持续时间长，惯性小
+  - scroll
+    - 参数是元素
+    - 没有持续时间，有惯性
+  - drag_and_drop
+    - 参数是元素
+    - 没有持续时间，没有惯性
+- 滑动和拖拽事件选择
+  - 考虑是否有“惯性”，传递的参数是“坐标”还是“元素”
+
+## 高级手势TouchAction
+- 概念和作用
+  - 高级手势，可以将小的动作组合成复杂的动作
+- 步骤
+  - 创建TouchAction对象
+  - 调用执行的动作
+  - perform()执行
+- 轻敲操作
+  - 方法
+    - `TouchAction(driver).tap(el=None, x=None, y=None).perform()`
+  - 参数：元素(el)或坐标(x, y)
+  - 多次点击
+    - 使用count参数
+- 按下/抬起操作
+  - 方法
+    - 按下：`TouchAction(driver).press(el=None, x=None, y=None).perfrom`
+    - 抬起：`TouchAction(driver).release().perform()`
+  - 参数：元素(el)或坐标(x, y)
+  - 模拟轻敲
+    - `TouchAction(driver).press(x=650, y=650).release().perform()`
+- 等待操作
+  - 方法
+    - `TouchAction(driver).wait(1000)`
+    - 参数
+      - 等待时间，单位ms
+- 长按操作
+  - 方法
+    - `TouchAction(driver).long_press(e1=None, x=None, y=None, duration=1000).perform()`
+    - 参数
+      - 元素(el)或坐标(x, y)
+      - 持续时间duration，单位ms
+- 移动操作
+  - 方法
+    - `TouchAction(driver).move_to(el=None, x=None, y=None).perform`
+    - 参数：元素(el)或坐标(x, y)
